@@ -13,7 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
  */
 @Configuration
 @Profile("dev")
-public class NoSecurityConfig {
+public class SpringSecurityIgnoreConfig {
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {

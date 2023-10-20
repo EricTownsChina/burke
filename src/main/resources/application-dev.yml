@@ -1,6 +1,9 @@
-filter:
-  xss:
+func:
+  xss-filter:
     enable: true
+    order: 1
+    url-patterns:
+      - /*
 
 datasource:
   mysql:

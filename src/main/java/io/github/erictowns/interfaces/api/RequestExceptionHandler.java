@@ -1,4 +1,4 @@
-package io.github.erictowns.interfaces.config;
+package io.github.erictowns.interfaces.api;
 
 import io.github.erictowns.common.exception.BaseException;
 import io.github.erictowns.common.exception.ValidationException;
@@ -8,9 +8,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.validation.BindException;
 import org.springframework.validation.ObjectError;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
@@ -22,8 +21,7 @@ import java.util.stream.Collectors;
  * @author EricTowns
  * @date 2023/10/10 20:56
  */
-@RestController
-@ControllerAdvice
+@RestControllerAdvice
 public class RequestExceptionHandler {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RequestExceptionHandler.class);
