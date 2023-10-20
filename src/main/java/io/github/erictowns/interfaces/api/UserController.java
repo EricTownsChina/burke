@@ -1,10 +1,16 @@
 package io.github.erictowns.interfaces.api;
 
 import io.github.erictowns.application.user.UserAppService;
+import io.github.erictowns.domain.user.dto.LoginDto;
 import io.github.erictowns.domain.user.dto.UserInfoDto;
 import io.github.erictowns.domain.user.service.UserService;
 import io.github.erictowns.interfaces.entity.Resp;
+import io.jsonwebtoken.JwtBuilder;
+import io.jsonwebtoken.Jwts;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
+
+import javax.annotation.Resource;
 
 /**
  * desc: user interface
@@ -16,14 +22,20 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 public class UserController {
 
-    private final UserService userService;
-    private final UserAppService userAppService;
+    @Resource
+    private UserService userService;
+    @Resource
+    private UserAppService userAppService;
 
-    public UserController(UserService userService,
-                          UserAppService userAppService) {
-        this.userService = userService;
-        this.userAppService = userAppService;
+    @PostMapping("/login")
+    public Resp login(@RequestBody LoginDto loginDto) {
+        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
+                new UsernamePasswordAuthenticationToken(loginDto.getUsername(), loginDto.getPassword());
+
+        return Resp.success();
     }
+
+
 
     @PostMapping("/get")
     public Resp getUserInfo(@RequestBody UserInfoDto userInfo) {
