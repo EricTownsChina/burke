@@ -7,6 +7,8 @@ import io.github.erictowns.domain.user.service.UserService;
 import io.github.erictowns.interfaces.entity.Resp;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +20,7 @@ import javax.annotation.Resource;
  * @author EricTownsChina@outlook.com
  * @date 2023-10-03 21:31
  */
+@Api(tags = "用户相关接口")
 @RequestMapping("/user")
 @RestController
 public class UserController {
@@ -43,6 +46,7 @@ public class UserController {
         return Resp.success(userInfoDto);
     }
 
+    @ApiOperation("根据用户id获取用户名称")
     @GetMapping("/name/{id}")
     public Resp getUsername(@PathVariable String id) {
         String username = userService.getUsernameById(id);

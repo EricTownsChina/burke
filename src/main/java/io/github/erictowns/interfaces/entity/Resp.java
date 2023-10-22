@@ -1,15 +1,23 @@
 package io.github.erictowns.interfaces.entity;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import io.swagger.annotations.ApiOperation;
+
 /**
  * desc: web response
  *
  * @author EricTownsChina@outlook.com
  * @date 2023-10-01 11:46
  */
+@ApiModel("统一响应")
 public class Resp {
 
+    @ApiModelProperty("响应码")
     private int code;
+    @ApiModelProperty("响应信息")
     private String msg;
+    @ApiModelProperty("响应数据")
     private Object data;
 
     public Resp() {
